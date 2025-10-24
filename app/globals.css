@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+@theme {
+  /* Container configuration */
+  --container-center: true;
+  --container-padding: 2rem;
+
+  /* Font families */
+  --font-family-poppins: "Poppins", sans-serif;
+  --font-family-roboto: "Roboto", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles - equivalent to @layer base */
+body {
+  font-family: var(--font-family-roboto);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-poppins);
+}
+
+/* Component styles - equivalent to @layer components */
+.img-grid {
+  columns: 1;
+  gap: 1rem;
+  
+  & > a:not(:first-child) {
+    margin-top: 1rem;
+  }
+  
+  & > a {
+    display: block;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (min-width: 640px) {
+  .img-grid {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .img-grid {
+    columns: 3;
+  }
+}
+
+@media (min-width: 1280px) {
+  .img-grid {
+    columns: 4;
+  }
+}
+
+.title-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(0 0 0 / 0.5);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+  opacity: 0;
+}
+
+.group:hover .title-container {
+  opacity: 1;
+}
+
+.title {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
