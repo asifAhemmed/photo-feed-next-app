@@ -1,95 +1,37 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
-
 @theme {
-  /* Container configuration */
-  --container-center: true;
-  --container-padding: 2rem;
-
-  /* Font families */
-  --font-family-poppins: "Poppins", sans-serif;
-  --font-family-roboto: "Roboto", sans-serif;
+  /* Font Family */
+  --font-poppins: "Poppins", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
 }
 
-/* Base styles - equivalent to @layer base */
-body {
-  font-family: var(--font-family-roboto);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-family-poppins);
-}
-
-/* Component styles - equivalent to @layer components */
-.img-grid {
-  columns: 1;
-  gap: 1rem;
-  
-  & > a:not(:first-child) {
-    margin-top: 1rem;
+@layer base {
+  body {
+    @apply font-roboto;
   }
-  
-  & > a {
-    display: block;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-poppins;
   }
 }
 
-@media (min-width: 640px) {
+@layer components {
   .img-grid {
-    columns: 2;
+    @apply columns-1 gap-4 sm:columns-2 lg:columns-3 xl:columns-4 [&>a:not(:first-child)]:mt-4 [&>a]:block [&>a]:rounded-lg [&>a]:overflow-hidden [&>a]:relative [&>a]:cursor-pointer;
   }
-}
 
-@media (min-width: 1024px) {
-  .img-grid {
-    columns: 3;
+  .title-container {
+    @apply absolute bottom-0 w-full text-center bg-black/50 py-2 transition-all duration-500 opacity-0 group-hover:opacity-100;
   }
-}
-
-@media (min-width: 1280px) {
-  .img-grid {
-    columns: 4;
-  }
-}
-
-.title-container {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  background-color: rgb(0 0 0 / 0.5);
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 500ms;
-  opacity: 0;
-}
-
-.group:hover .title-container {
-  opacity: 1;
-}
-
-.title {
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-@media (min-width: 1024px) {
   .title {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    @apply text-white font-semibold text-base lg:text-lg;
   }
 }
+
+
+

@@ -9,9 +9,9 @@ const PhotoDetails = async ({ id, lang }) => {
 
   return (
     <div className="grid grid-cols-12 gap-4 2xl:gap-10 ">
-      <div className="col-span-12 lg:col-span-8 border rounded-xl">
+      <div className="col-span-12 lg:col-span-8 border border-gray-400 rounded-xl">
         <Image
-          className="max-w-full h-full max-h-[70vh] mx-auto"
+          className="max-w-full h-full max-h-[70vh] mx-auto rounded-xl"
           src={photo.url}
           alt={photo.title}
           width={900}
@@ -19,7 +19,7 @@ const PhotoDetails = async ({ id, lang }) => {
         />
       </div>
 
-      <div className="p-6 border rounded-xl col-span-12 lg:col-span-4">
+      <div className="p-6 border border-gray-400 rounded-xl col-span-12 lg:col-span-4">
         <h2 className="text-lg lg:text-2xl font-bold mb-2">{photo.title}</h2>
         <div className="text-xs lg:text-sm text-black/60 mb-6">
           {photo.tags.map((tag) => `#${tag} `)}
@@ -57,7 +57,7 @@ const PhotoDetails = async ({ id, lang }) => {
               </div>
             </div>
             <button className="flex items-center gap-1.5 text-black/60 text-xs xl:text-sm">
-              <img src="/follow.svg" className="w-5 h-5" />
+              <Image src="/follow.svg" alt="follow" width={50} height={50} className="w-5 h-5" />
               {dictionary.follow}
             </button>
           </div>
@@ -68,6 +68,7 @@ const PhotoDetails = async ({ id, lang }) => {
             <button className="flex-1 border py-1.5 rounded text-xs lg:text-sm flex items-center justify-center text-center gap-1.5 font-bold hover:bg-yellow-400">
               <Image
                 src="/heart.svg"
+                alt="heart"
                 className="w-5 h-5"
                 width={50}
                 height={50}
@@ -77,6 +78,7 @@ const PhotoDetails = async ({ id, lang }) => {
             <button className="flex-1 border py-1.5 rounded text-xs lg:text-sm flex items-center justify-center text-center gap-1.5 font-bold hover:bg-yellow-400">
               <Image
                 src="/save.svg"
+                alt="save"
                 className="w-5 h-5"
                 width={50}
                 height={50}
@@ -86,6 +88,7 @@ const PhotoDetails = async ({ id, lang }) => {
             <button className="flex-1 border py-1.5 rounded text-xs lg:text-sm flex items-center justify-center text-center gap-1.5 font-bold hover:bg-yellow-400">
               <Image
                 src="/share.svg"
+                alt="share"
                 className="w-5 h-5"
                 width={50}
                 height={50}
